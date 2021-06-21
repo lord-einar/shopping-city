@@ -6,21 +6,21 @@ function ItemComponent({prod}) {
     
     
     return (
-        <>
-        <Card style={{ width: '18rem' }}>
-        <Card.Body>
-            <Card.Img src={prod.img}></Card.Img>
-            <Card.Title>{prod.articulo}</Card.Title>
-            <Card.Text><ItemCountComponent prod={prod} /> </Card.Text>
-            <Card.Text>Disponible: {prod.stock} </Card.Text>
-            <Card.Text>
-                Precio: {prod.precio}
-            </Card.Text>
-            <Button variant="primary">Saber mas</Button>
-        </Card.Body>
-        </Card>
-    </>
-)
+        <div className='col-3 p-2'>
+            <Card>
+            <Card.Body>
+                <Card.Img src={prod.thumbnail}></Card.Img>
+                <Card.Title>{prod.title}</Card.Title>
+                <Card.Text><ItemCountComponent prod={prod} /> </Card.Text>
+                <Card.Text>Disponible: {prod.sold_quantity} </Card.Text>
+                <Card.Text>
+                    Precio: {prod.price}
+                </Card.Text>
+                <Button variant="primary">Saber mas</Button>
+            </Card.Body>
+            </Card>
+        </div>
+    )
 }
 
 

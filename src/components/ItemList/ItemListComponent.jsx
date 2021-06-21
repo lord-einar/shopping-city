@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ItemComponent from '../Item/ItemComponent'
 
 function ItemListComponent() {
@@ -31,18 +31,42 @@ function ItemListComponent() {
             stock: 10,
             img: 'https://www.techinn.com/f/13795/137954422/amd-procesador-ryzen-7-5800x-3.8ghz.jpg'
         }
-    ]
+    ] 
 
+    function traerML(){
+        let articulos = fetch('https://api.mercadolibre.com/sites/MLA/search?q=procesadores', {
+            method:'POST',
+            headers: {
+                Authorizations: 'Bearer EiqG4RJkxA2xIHbcijRFjEoybge68sy9'
+            }
+        }).then(resp => {
+            return resp.json()
+        })
+        return articulos
+    }
+
+    const [prod, setProd] = useState([])
+    let articulos
+
+    useEffect( () => {
+        async function traerProductos() {
+            articulos = await traerML()
+            setProd(articulos.results)
+        }
+        traerProductos()
+    }, [])
+    
+    console.log(prod)
 
     return (
         <div className='container'>
             <img src="logo.svg" className="App-logo" alt="logo" />
             <a className="App-link" rel="noopener noreferrer"> Shopping City </a>
-            <p className='d-flex'>
-                {productos.map(prod => {
-                    return <ItemComponent 
-                            key={prod.id}
-                            prod={prod}
+            <p className='d-inline-flex p-2 flex-wrap'>
+                {prod.map(p => {
+                    return <ItemComponent
+                            key={p.id}
+                            prod={p}
                            />
                 })}
             </p>

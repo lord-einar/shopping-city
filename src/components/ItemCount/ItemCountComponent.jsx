@@ -7,7 +7,7 @@ function ItemCountComponent({prod}) {
     const [cantidad, setCantidad] = useState(1)
 
     function onAdd(){
-        if(cantidad < prod.stock){
+        if(cantidad < prod.sold_quantity){
             setCantidad(Number(cantidad)+1)
         }
     }
@@ -19,7 +19,7 @@ function ItemCountComponent({prod}) {
     return (
         <div className='d-flex'>
             <Button onClick={onSubtract}>-1</Button>
-                <Form.Control className='text-center' type="text" name="cantidad" value={cantidad} />
+                <Form.Control className='text-center' type="text" name="cantidad" readOnly value={cantidad} />
             <Button onClick={onAdd}>+1</Button>
         </div>
     )
