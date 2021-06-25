@@ -4,6 +4,9 @@ import ItemCountComponent from '../ItemCount/ItemCountComponent'
 
 function ItemComponent({prod}) {
     
+    const onAdd = (cant) => {
+        alert(`Se han agregado ${cant} productos al carrito`)
+    }
     
     return (
         <div className='col-3 p-2'>
@@ -11,7 +14,7 @@ function ItemComponent({prod}) {
             <Card.Body>
                 <Card.Img src={prod.thumbnail}></Card.Img>
                 <Card.Title>{prod.title}</Card.Title>
-                <Card.Text><ItemCountComponent prod={prod} /> </Card.Text>
+                <Card.Text><ItemCountComponent prod={prod} onadd={onAdd} /> </Card.Text>
                 <Card.Text>Disponible: {prod.sold_quantity} </Card.Text>
                 <Card.Text>
                     Precio: {prod.price}

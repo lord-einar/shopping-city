@@ -2,25 +2,28 @@ import Button from 'react-bootstrap/Button'
 import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
 
-function ItemCountComponent({prod}) {
+function ItemCountComponent({prod, onadd}) {
     
     const [cantidad, setCantidad] = useState(1)
 
-    function onAdd(){
+    function sumar(){
         if(cantidad < prod.sold_quantity){
             setCantidad(Number(cantidad)+1)
         }
     }
-    function onSubtract(){
+    function restar(){
         if(cantidad > 1) {
             setCantidad(Number(cantidad)-1)
         }
     }
     return (
-        <div className='d-flex'>
-            <Button onClick={onSubtract}>-1</Button>
-                <Form.Control className='text-center' type="text" name="cantidad" readOnly value={cantidad} />
-            <Button onClick={onAdd}>+1</Button>
+        <div>
+            <div className='d-flex'>
+                <Button onClick={restar}>-1</Button>
+                    <Form.Control className='text-center' type="text" name="cantidad" readOnly value={cantidad} />
+                <Button onClick={sumar}>+1</Button>
+            </div>
+            <Button className='inline-block m-2' onClick={ () => {onadd(cantidad)}} >Agregar al carrito</Button>
         </div>
     )
 }

@@ -1,0 +1,19 @@
+.parrafo-descripcion {
+    width: 70%;
+    margin: auto;
+    padding: 2%;
+    text-align: left;
+    border: 1px solid;
+    background-color: rgb(184, 199, 219);
+}
+.card-detail {
+    width: 95%;
+    margin: 2%;
+    padding: 5%;
+}
+
+.details {
+    margin: auto;
+    width: 80%;
+    justify-content: center;
+}
