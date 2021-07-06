@@ -14,6 +14,23 @@
   color: #61dafb;
 }
 
+.logo-portada{
+  height: 20vh;
+}
+
+.titulo-portada{
+  font-size: 2rem;
+  color:#F6F64B;
+}
+
+.portada {
+  margin: 5vh;
+}
+
+.img-categorias {
+  width: 100%;
+}
+
 .cart-icon {
   display: inline;
   position: absolute;

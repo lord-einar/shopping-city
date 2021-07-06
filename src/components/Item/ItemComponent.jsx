@@ -1,8 +1,9 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import ItemCountComponent from '../ItemCount/ItemCountComponent'
 
-function ItemComponent({prod}) {
+function ItemComponent({prod, key}) {
     
     const onAdd = (cant) => {
         alert(`Se han agregado ${cant} productos al carrito`)
@@ -19,7 +20,7 @@ function ItemComponent({prod}) {
                 <Card.Text>
                     Precio: {prod.price}
                 </Card.Text>
-                <Button variant="primary">Saber mas</Button>
+                <Link to={`/detalle/${prod.id}`}><Button variant="primary">Saber mas</Button></Link>
             </Card.Body>
             </Card>
         </div>
