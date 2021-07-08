@@ -16,14 +16,14 @@ function ItemListComponent() {
 
     return (
         <div className='container'>
-            <p className='d-inline-flex p-2 flex-wrap'>
+            <div className='d-inline-flex p-2 flex-wrap'>
                 {prod.map(p => {
                     return <ItemComponent
                         key={p.id}
                         prod={p}
                            />
                 })}
-            </p>
+            </div>
         </div>
     )
 }

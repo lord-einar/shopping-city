@@ -23,7 +23,7 @@ function ItemCountComponent({prod, onadd}) {
                     <Form.Control className='text-center' type="text" name="cantidad" readOnly value={cantidad} />
                 <Button onClick={sumar}>+1</Button>
             </div>
-            <Button className='inline-block m-2' onClick={ () => {onadd(cantidad)}} >Agregar al carrito</Button>
+            <Button className='inline-block m-2' onClick={ () => {onadd(cantidad, true)}} >Agregar al carrito</Button>
         </div>
     )
 }

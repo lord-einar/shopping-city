@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import ItemCountComponent from '../ItemCount/ItemCountComponent'
 
-function ItemComponent({prod, key}) {
+function ItemComponent({prod}) {
     
     const onAdd = (cant) => {
         alert(`Se han agregado ${cant} productos al carrito`)
@@ -15,7 +15,6 @@ function ItemComponent({prod, key}) {
             <Card.Body>
                 <Card.Img src={prod.thumbnail}></Card.Img>
                 <Card.Title>{prod.title}</Card.Title>
-                <Card.Text><ItemCountComponent prod={prod} onadd={onAdd} /> </Card.Text>
                 <Card.Text>Disponible: {prod.sold_quantity} </Card.Text>
                 <Card.Text>
                     Precio: {prod.price}

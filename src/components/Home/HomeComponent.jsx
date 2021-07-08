@@ -36,10 +36,11 @@ function HomeComponent() {
                     Shopping City
                 </p>
                 <div className='d-flex flex-wrap justify-content-center'>
-                    {categories.map (category => {
+                    {categories.map ((category, index) => {
                         return(
                             <CategoriesComponent 
                             categoria={category}
+                            key={index}
                             ></CategoriesComponent>
                             )
                         })}
