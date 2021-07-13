@@ -3,8 +3,12 @@ import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Navbar from "react-bootstrap/Navbar";
 import CartWidgetComponent from '../CartWidget/CartWidgetComponent';
+import { useContext } from 'react';
+import { ShopContext } from '../context/ShopContext';
 
 function NavBarComponent() {
+
+    const {cart} = useContext(ShopContext)
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
         <Navbar.Brand href="#home">
@@ -23,8 +27,6 @@ function NavBarComponent() {
             <Nav.Link as={Link} to={'/categorias/indumentaria'}>Indumentaria</Nav.Link>
             <Nav.Link as={Link} to={'/categorias/herramientas'}>Herramientas</Nav.Link>
             <Nav.Link as={Link} to={'/categorias/informatica'}>Informatica</Nav.Link>
-            
-
             <CartWidgetComponent />
           </Nav>
         </Navbar.Collapse>

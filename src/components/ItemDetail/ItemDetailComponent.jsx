@@ -1,16 +1,21 @@
 import React from 'react'
 import './ItemDetail.css'
-import { Card, Button, Row, Col } from 'react-bootstrap'
+import { Card, Row, Col } from 'react-bootstrap'
 import ItemCountComponent from '../ItemCount/ItemCountComponent'
 import { useState } from 'react'
 import CheckoutComponent from '../Checkuot/CheckoutComponent'
+import { useContext } from 'react'
+import { ShopContext } from '../context/ShopContext'
 
 function ItemDetailComponent({prod}) {
+    
+    const { cart, addToCart } = useContext(ShopContext)
+    console.log(prod)
 
     const [openCart, setOpenCart ] = useState(false)
     const onAdd = (cant, estado) => {
         setOpenCart(estado)
-        console.log(cant)
+        addToCart(prod, cant)
     }
     return (
         <div className='row details'>
@@ -27,7 +32,7 @@ function ItemDetailComponent({prod}) {
                             <Card.Text>Disponible: {prod.sold_quantity} </Card.Text>
                             <Card.Text>
                                 {openCart 
-                                ? <CheckoutComponent></CheckoutComponent>                                
+                                ? <CheckoutComponent />                         
                                 : <ItemCountComponent onadd={onAdd} prod={prod} />
                                 }
                             </Card.Text>

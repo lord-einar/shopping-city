@@ -1,13 +1,8 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import ItemCountComponent from '../ItemCount/ItemCountComponent'
 
 function ItemComponent({prod}) {
-    
-    const onAdd = (cant) => {
-        alert(`Se han agregado ${cant} productos al carrito`)
-    }
     
     return (
         <div className='col-3 p-2'>
