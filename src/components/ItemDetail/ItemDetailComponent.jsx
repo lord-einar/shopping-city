@@ -9,7 +9,7 @@ import { ShopContext } from '../context/ShopContext'
 
 function ItemDetailComponent({prod}) {
     
-    const { cart, addToCart } = useContext(ShopContext)
+    const { addToCart } = useContext(ShopContext)
     console.log(prod)
 
     const [openCart, setOpenCart ] = useState(false)

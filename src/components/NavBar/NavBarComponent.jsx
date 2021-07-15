@@ -8,7 +8,6 @@ import { ShopContext } from '../context/ShopContext';
 
 function NavBarComponent() {
 
-    const {cart} = useContext(ShopContext)
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
         <Navbar.Brand href="#home">

@@ -9,18 +9,29 @@ export function ShopComponentContext({children}) {
     const [cart, setCart] = useState([])
 
     
-    const addToCart = async (newProd, cant) => {
+    const addToCart = (newProd, cant) => {
 
-        const productoAgregado = {...newProd, cantidad: cant}
+        const subtotal = newProd.price * cant
+
+        const productoAgregado = {...newProd, cantidad: cant, subtotal: subtotal}
         if(cart){
             cart.map(item => {
                 if(item.id === productoAgregado.id){
-                    item.cantidad = item.cantidad + productoAgregado.cantidad
-                    return console.log(cart)
+                     item.cantidad = item.cantidad + productoAgregado.cantidad
                 }
             })
         }
-        await setCart(cart => [...cart, productoAgregado])
+        setCart(cart => [...cart, productoAgregado])
+    }
+
+    const removeToCart = (id) => {
+
+        let aux = cart.filter(obj => {
+            return obj.id !== id;
+          });
+          setCart(aux);
+      
+
     }
     
     const [prod, setProd] = useState([])
@@ -33,12 +44,12 @@ export function ShopComponentContext({children}) {
                 .then(resp => setProd(resp.data.results))
             }
         }
-
+        console.log(cart)
         getProducts()
     }, [category, cart])
 
     return (
-        <ShopContext.Provider value={{prod, setProd, setCategory, cart, addToCart}}>
+        <ShopContext.Provider value={{prod, setProd, setCategory, cart, addToCart, removeToCart}}>
             {children}
         </ShopContext.Provider>
     )
