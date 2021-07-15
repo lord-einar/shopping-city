@@ -8,7 +8,7 @@ import './CartComponent.css'
 
 function CartComponent() {
 
-    const {cart, removeToCart} = useContext(ShopContext)
+    const {cart, removeToCart, borrarCarrito} = useContext(ShopContext)
     const [total, setTotal]= useState(0)
 
     useEffect( () => {
@@ -55,12 +55,15 @@ function CartComponent() {
             <div className='total-carrito'>
                 <Row>
                     <Col>
+                        <Button className='btn btn-danger' onClick={borrarCarrito}>Limpiar carrito</Button>
+                    </Col>
+                    <Col>
                         <Alert variant='danger'>
                             Total: {total}
                         </Alert>
                     </Col>
                     <Col>
-                        <Button className='btn btn-danger'>FINALIZAR COMPRA</Button>
+                        <Button className='btn btn-success'>FINALIZAR COMPRA</Button>
                     </Col>
                 </Row>
             </div>

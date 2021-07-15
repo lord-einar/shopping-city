@@ -4,9 +4,10 @@ import { createContext, useEffect, useState } from 'react'
 export const ShopContext = createContext()
 
 export function ShopComponentContext({children}) {
-
+    
     const [category, setCategory] = useState([])
     const [cart, setCart] = useState([])
+    const [prod, setProd] = useState([])
 
     
     const addToCart = (newProd, cant) => {
@@ -30,11 +31,12 @@ export function ShopComponentContext({children}) {
             return obj.id !== id;
           });
           setCart(aux);
-      
+    }
 
+    const borrarCarrito = () => {
+        setCart([])
     }
     
-    const [prod, setProd] = useState([])
     useEffect( () => {
 
         const getProducts = async () => {
@@ -49,7 +51,7 @@ export function ShopComponentContext({children}) {
     }, [category, cart])
 
     return (
-        <ShopContext.Provider value={{prod, setProd, setCategory, cart, addToCart, removeToCart}}>
+        <ShopContext.Provider value={{prod, setProd, setCategory, cart, addToCart, removeToCart, borrarCarrito}}>
             {children}
         </ShopContext.Provider>
     )
